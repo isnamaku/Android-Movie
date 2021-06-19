@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/design_header"
+    android:gravity="center_vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/main_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/main_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/bg_button_pink"
+        app:menu="@menu/item_menu"
+        app:itemIconTint="@animator/bottom_navigation_selector"
+        app:itemTextColor="@animator/bottom_navigation_selector"
+        >
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</LinearLayout>

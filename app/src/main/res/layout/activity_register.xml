@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="30dp"
+    android:background="@drawable/design_header"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:textColor="@color/teal_700"
+        android:textSize="40dp"
+        android:layout_marginBottom="50dp" />
+
+    <EditText
+        android:id="@+id/edtText_usernameRegist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:textColor="@color/brokenwhite"
+        android:textColorHint="@color/brokenwhite" />
+
+    <EditText
+        android:id="@+id/edtText_passwordRegist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/brokenwhite"
+        android:textColorHint="@color/brokenwhite" />
+
+    <EditText
+        android:id="@+id/edtText_passwordConfRegist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password confirmation"
+        android:inputType="textPassword"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/brokenwhite"
+        android:textColorHint="@color/brokenwhite" />
+
+    <Button
+        android:id="@+id/btn_registerRegist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="register"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/brokenwhite"
+        android:background="@drawable/bg_button_teal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+        <Button
+            android:id="@+id/btn_loginRegist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@color/brokenwhite"
+            android:background="@drawable/bg_button_pink"/>
+    </LinearLayout>
+
+
+</LinearLayout>
