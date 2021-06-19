@@ -10,5 +10,9 @@ public class MovieDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
+
+        int id = getIntent().getIntExtra("id",0);
+
+
     }
 }

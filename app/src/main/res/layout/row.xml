@@ -8,7 +8,7 @@
 >
 
     <RelativeLayout
-        android:id="@+id/ListProduk"
+        android:id="@+id/MovieItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"

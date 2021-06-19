@@ -1,6 +1,7 @@
 package TugasAkhir.Mobile.movie;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
       holder.tvJudul.setText(results.get(position).getTitle());
         Picasso.get()
                 .load("https://image.tmdb.org/t/p/w500"+results.get(position).getPosterPath())
@@ -52,6 +53,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         holder.tvVote.setText(results.get(position).getVoteCount()+" Votes");
         holder.tvPopular.setText( results.get(position).getPopularity());
 
+        holder.bind(results.get(position));
+
+
+
     }
 
     @Override
@@ -61,6 +66,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvJudul, tvRate, tvVote, tvPopular;
+        private RecyclerView movieItem;
         private ImageView ivPoster;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,11 +75,24 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvRate = itemView.findViewById(R.id.tv_rate);
             tvVote = itemView.findViewById(R.id.tv_vote);
             tvPopular = itemView.findViewById(R.id.tv_popularitas2);
+        }
 
+        public void bind(final MovieResult movieResult) {
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, MovieDetails.class);
+                    intent.putExtra("tipe", "movie");
+                    intent.putExtra("id", movieResult.getId());
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
 
 
         }
-    }
+
+        }
+
 
