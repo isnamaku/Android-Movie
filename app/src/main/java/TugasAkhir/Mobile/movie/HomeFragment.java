@@ -55,46 +55,36 @@ public class HomeFragment extends Fragment {
 
         setPopularMovies();
 
-//Alternative
-//        mApiService = ApiClient.getClient().create(BaseApiService.class);
-//        getPopularMovies();
-
-
-//            if (API_KEY.isEmpty()) {
-//                Toast.makeText(getContext(), "Please obtain your API KEY first from themoviedb.org", Toast.LENGTH_LONG).show();
-//                return;
-//            }
-//
-//            ApiInterface apiService =
-//                    ApiClient.getClient().create(ApiInterface.class);
-//
-//            Call<Respons> call = apiService.getPopularMovies(API_KEY);
-//            call.enqueue(new Callback<Respons>() {
-//                @Override
-//                public void onResponse(Call<Respons>call, Response<Respons> response) {
-//                    List<MovieResult> movies = response.body().getResults();
-//                    Log.d("Retofit Get", "Number of movies received: " + movies.size());
-//                    recyclerView.setLayoutManager(linearLayoutManager);
-//                    recyclerView.setAdapter(new MovieAdapter(movies, R.layout.row, getContext()));
-////
-//
-//                }
-//
-//                @Override
-//                public void onFailure(Call<Respons>call, Throwable t) {
-//                    // Log error here since request failed
-//                    Log.e("Retrofit Get", t.toString());
-//                }
-//            });
-
     }
 
     private void setPopularMovies() {
         recyclerView = recyclerView.findViewById(R.id.rvMovie);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-
+        Toast toast = Toast.makeText(getContext(), "Loading all popular movies", Toast.LENGTH_SHORT);
+        toast.show();
         getPopularMovies();
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (!recyclerView.canScrollVertically(2)) {
+                    if (dy > 0) {
+                        if (currentPageMoviePopular <= 10) {
+                            currentPageMoviePopular += 1;
+                        }
+                    } else if(dy<0){
+
+                        currentPageMoviePopular -= 1;
+                        linearLayoutManager.getReverseLayout();
+
+                    }
+                    getPopularMovies();
+                }
+            }
+
+        });
 
     }
 
@@ -111,8 +101,9 @@ public class HomeFragment extends Fragment {
                         Log.d("Retrofit Get", "Number of movies : " +
                                 String.valueOf(moviePopularResult.size()));
                         List<MovieResult> movies = response.body().getResults();
-                    recyclerView.setLayoutManager(linearLayoutManager);
-                    recyclerView.setAdapter(new MovieAdapter(movies, R.layout.row, getContext()));
+                        recyclerView.setLayoutManager(linearLayoutManager);
+                        recyclerView.setAdapter(new MovieAdapter(movies, R.layout.row, getContext()));
+
 
                     }
                 }
