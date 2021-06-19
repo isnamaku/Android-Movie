@@ -9,14 +9,14 @@ public class MovieResult {
 	private boolean video;
 	private String title;
 	private List<Integer> genreIds;
-	private String posterPath;
+	private String poster_path;
 	private String backdropPath;
 	private String releaseDate;
-	private double popularity;
-	private double voteAverage;
+	private String popularity;
+	private double vote_average;
 	private int id;
 	private boolean adult;
-	private int voteCount;
+	private int vote_count;
 
 	public String getOverview(){
 		return overview;
@@ -43,7 +43,7 @@ public class MovieResult {
 	}
 
 	public String getPosterPath(){
-		return posterPath;
+		return poster_path;
 	}
 
 	public String getBackdropPath(){
@@ -54,12 +54,12 @@ public class MovieResult {
 		return releaseDate;
 	}
 
-	public double getPopularity(){
+	public String  getPopularity(){
 		return popularity;
 	}
 
 	public double getVoteAverage(){
-		return voteAverage;
+		return vote_average;
 	}
 
 	public int getId(){
@@ -71,6 +71,6 @@ public class MovieResult {
 	}
 
 	public int getVoteCount(){
-		return voteCount;
+		return vote_count;
 	}
 }

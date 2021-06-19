@@ -1,5 +1,6 @@
 package TugasAkhir.Mobile.movie;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -21,14 +22,6 @@ public class ApiClient {
     }
 
 
-    private static OkHttpClient buildClient() {
-        return new OkHttpClient
-                .Builder()
-                .addInterceptor(new HttpLoggingInterceptor()
-                        .setLevel(HttpLoggingInterceptor
-                                .Level.BODY))
-                .build();
     }
 
 
-}
