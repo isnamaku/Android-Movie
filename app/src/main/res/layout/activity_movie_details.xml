@@ -290,6 +290,7 @@
 
     </androidx.core.widget.NestedScrollView>
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -303,6 +304,7 @@
 
     </androidx.cardview.widget.CardView>
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/search"
         android:layout_width="wrap_content"
@@ -312,3 +314,6 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_baseline_search_24" />
 </RelativeLayout>
+
+
+
