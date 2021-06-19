@@ -10,8 +10,8 @@ public class MovieResult {
 	private String title;
 	private List<Integer> genreIds;
 	private String poster_path;
-	private String backdropPath;
-	private String releaseDate;
+	private String backdrop_path;
+	private String release_date;
 	private String popularity;
 	private double vote_average;
 	private int id;
@@ -47,11 +47,11 @@ public class MovieResult {
 	}
 
 	public String getBackdropPath(){
-		return backdropPath;
+		return backdrop_path;
 	}
 
 	public String getReleaseDate(){
-		return releaseDate;
+		return release_date;
 	}
 
 	public String  getPopularity(){

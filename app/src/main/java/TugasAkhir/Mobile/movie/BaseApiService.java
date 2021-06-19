@@ -2,6 +2,7 @@ package TugasAkhir.Mobile.movie;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
@@ -32,8 +33,8 @@ import retrofit2.http.Query;
                                    @Query("query") String query, @Query("page") int page);
 
         //Permintaan untuk menampilkan rincian / details movie
-//        @GET("movie/{movie_id}")
-//        Call<MovieDetails> getMovieDetails(@Path("movie_id") String id, @Query("api_key") String apiKey);
+        @GET("movie/{movie_id}")
+        Call<MovieResult> getMovieDetails(@Path("movie_id") String id, @Query("api_key") String apiKey);
 
 
 
