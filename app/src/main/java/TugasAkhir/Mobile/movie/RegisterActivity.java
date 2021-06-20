@@ -2,17 +2,21 @@ package TugasAkhir.Mobile.movie;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
     DatabaseHelper db;
-    Button login, register;
-    EditText username, password, passwordConf;
+    EditText editTextUsername, editTextEmail, editTextPassword, editTextCnfPassword;
+    Button buttonRegister;
+
+    TextView textViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,44 +24,48 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         db = new DatabaseHelper(this);
+        editTextUsername = findViewById(R.id.editTextUsername);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextCnfPassword = findViewById(R.id.editTextCnfPassword);
+        buttonRegister = findViewById(R.id.buttonRegister);
 
-        username = (EditText)findViewById(R.id.edtText_usernameRegist);
-        password = (EditText)findViewById(R.id.edtText_passwordRegist);
-        passwordConf = (EditText)findViewById(R.id.edtText_passwordConfRegist);
-        login = (Button)findViewById(R.id.btn_loginRegist);
-        register = (Button)findViewById(R.id.btn_registerRegist);
-
-        //login
-        login.setOnClickListener(new View.OnClickListener() {
+        textViewLogin = findViewById(R.id.textViewLogin);
+        textViewLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
-                finish();
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
 
-        //register
-        register.setOnClickListener(new View.OnClickListener() {
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strUsername = username.getText().toString();
-                String strPassword = password.getText().toString();
-                String strPasswordConf = passwordConf.getText().toString();
-                if (strPassword.equals(strPasswordConf)) {
-                    Boolean daftar = db.insertUser(strUsername, strPassword);
-                    if (daftar == true) {
-                        Toast.makeText(getApplicationContext(), "Daftar Berhasil", Toast.LENGTH_SHORT).show();
-                        Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        startActivity(loginIntent);
-                        finish();
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Daftar Gagal", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Password Tidak Cocok", Toast.LENGTH_SHORT).show();
+                User user = new User();
+                String userName = editTextUsername.getText().toString().trim();
+                String email = editTextEmail.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
+                String passwordConf = editTextCnfPassword.getText().toString().trim();
+
+                if (password.equals(passwordConf)) {
+                    user.setUserName(userName);
+                    user.setEmail(email);
+
+                    user.setPassword(password);
+                    long val = db.addUser(user);
+                    if (val > 0) {
+                        Toast.makeText(RegisterActivity.this, "Berhasil registrasi!", Toast.LENGTH_SHORT).show();
+                        Intent moveToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+
+
+                        startActivity(moveToLogin);
+                    } else
+                        Toast.makeText(RegisterActivity.this, "Registrasi Error!", Toast.LENGTH_SHORT).show();
+
+                    Log.d("Item Added ID : ", String.valueOf(db.getUsersCount()));
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Password tidak sama!", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

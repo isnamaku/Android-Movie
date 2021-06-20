@@ -19,54 +19,77 @@
         android:textSize="40dp"
         android:layout_marginBottom="50dp" />
 
-    <EditText
-        android:id="@+id/edtText_usernameRegist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="username"
-        android:textColor="@color/brokenwhite"
-        android:textColorHint="@color/brokenwhite" />
-
-    <EditText
-        android:id="@+id/edtText_passwordRegist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="password"
-        android:inputType="textPassword"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/brokenwhite"
-        android:textColorHint="@color/brokenwhite" />
-
-    <EditText
-        android:id="@+id/edtText_passwordConfRegist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="password confirmation"
-        android:inputType="textPassword"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/brokenwhite"
-        android:textColorHint="@color/brokenwhite" />
-
-    <Button
-        android:id="@+id/btn_registerRegist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="register"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/brokenwhite"
-        android:background="@drawable/bg_button_teal" />
     <LinearLayout
+        android:id="@+id/input_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right">
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/brokenwhite"
+            android:textColorHint="@color/brokenwhite" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/brokenwhite"
+            android:textColorHint="@color/brokenwhite" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/brokenwhite"
+            android:textColorHint="@color/brokenwhite"/>
+        <EditText
+            android:id="@+id/editTextCnfPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/brokenwhite"
+            android:textColorHint="@color/brokenwhite"/>
+
         <Button
-            android:id="@+id/btn_loginRegist"
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_button_pink"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="SIGN UP"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/textViewLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textColor="@color/brokenwhite"
-            android:background="@drawable/bg_button_pink"/>
-    </LinearLayout>
+            android:layout_marginTop="3dp"
+            android:padding="10dp"
+            android:text="Already Have an Account?  Sign in"
+            android:textAllCaps="true"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#FAD0E1"
+            android:fontFamily="sans-serif"/>
 
+    </LinearLayout>
 
 </LinearLayout>

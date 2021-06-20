@@ -13,15 +13,32 @@
         android:orientation="vertical"
         android:gravity="center">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/cam" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="WELCOME!"
             android:textSize="28dp"
-            android:textColor="@color/teal_700"/>
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/brokenwhite"/>
 
         <Button
-            android:layout_marginTop="50dp"
+            android:layout_margin="30dp"
+            android:id="@+id/btn_viewProfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Profil"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_button_teal"/>
+
+        <Button
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
