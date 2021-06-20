@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         inflater = LayoutInflater.from(MainActivity.this);
         final View view = inflater.inflate(R.layout.popup, null);
         final EditText editTextUsername = view.findViewById(R.id.editTextUsername);
+        final EditText editTextPassword = view.findViewById(R.id.editTextPassword);
         final EditText editTextEmail = view.findViewById(R.id.editTextEmail);
 
         alertDialogBuilder.setView(view);
@@ -125,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         user.setEmail(textViewEmailString);
         user.setPassword(textViewPasswordString);
 
+        editTextPassword.setText(user.getPassword());
         editTextUsername.setText(user.getUserName());
         editTextEmail.setText(user.getEmail());
 
@@ -137,9 +139,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             public void onClick(View v) {
                 user.setUserName(editTextUsername.getText().toString());
                 user.setEmail(editTextEmail.getText().toString());
+                user.setPassword(editTextPassword.getText().toString());
 
                 if (!editTextUsername.getText().toString().isEmpty()
-                        && !editTextEmail.getText().toString().isEmpty()) {
+                        && !editTextEmail.getText().toString().isEmpty()
+                        && !editTextPassword.getText().toString().isEmpty()) {
                     db.updateUser(user);
                     Snackbar.make(v, "Details Saved!", Snackbar.LENGTH_LONG).show();
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
