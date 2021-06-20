@@ -1,6 +1,7 @@
 package TugasAkhir.Mobile.movie;
 
 import android.content.Intent;
+import android.hardware.usb.UsbRequest;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,11 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ProfileFragment extends Fragment {
-
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -34,9 +37,10 @@ public class ProfileFragment extends Fragment {
         Button btnViewProfil = (Button) view.findViewById(R.id.btn_viewProfil);
         btnViewProfil.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent profil = new Intent(getActivity(), ProfilDetail.class);
-                startActivity(profil);
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ProfilDetail.class);
+
+                getContext().startActivity(intent);
             }
         });
         return view;
