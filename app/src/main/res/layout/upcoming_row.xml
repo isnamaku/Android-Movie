@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="6dp"
+    app:cardUseCompatPadding="true" >
+
+    <RelativeLayout
+        android:id="@+id/MovieItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/bg_rounded">
+
+        <ImageView
+            android:id="@+id/MovieImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/MovieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/MovieImg"
+            android:textSize="18dp"
+            android:text="Judul Film"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/teal_700"
+            android:layout_toRightOf="@id/MovieImg"
+            android:layout_marginLeft="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linea2r"
+            android:layout_below="@id/MovieTitle"
+            android:layout_toRightOf="@id/MovieImg"
+            android:orientation="horizontal"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/tv_popularitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:layout_below="@+id/MovieTitle"
+                android:layout_toEndOf="@id/MovieImg"
+                android:layout_toRightOf="@id/MovieImg"
+                android:text="Popularity "
+                android:textColor="@color/colorAccent"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/tv_popularitas2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/MovieTitle"
+                android:text="Popularitas : "
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/tv_popularitas"
+                android:textColor="@color/colorAccent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear"
+            android:layout_below="@id/linea2r"
+            android:layout_toRightOf="@id/MovieImg"
+            android:orientation="horizontal"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp" >
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_baseline_star_24"
+                android:scaleType="centerInside"
+                android:layout_marginRight="3dp" />
+
+            <TextView
+                android:id="@+id/tv_rate"
+                android:layout_width="match_parent"
+                android:layout_weight="1.5"
+                android:layout_height="wrap_content"
+                android:text="8.6"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:layout_marginRight="5dp" />
+
+            <TextView
+                android:id="@+id/tv_vote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2000"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

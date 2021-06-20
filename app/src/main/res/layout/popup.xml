@@ -40,10 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editTextUsername"
                 android:layout_marginTop="15dp"
-                android:hint="Email"
-
-                />
-
+                android:hint="Email" />
 
             <Button
                 android:id="@+id/saveButton"
