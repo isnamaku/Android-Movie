@@ -34,8 +34,8 @@ public class UpcomingFragment extends Fragment {
     private MovieAdapter movieAdapter;
     public static final String API_KEY = "e6bb64e1c930a688fb64df291debff39";
     public static final String LANGUAGE = "en-US";
-    private int currentPageMoviePopular = 1;
-    private int totalPagesMoviePopular = 1;
+    private int currentPageUpComingMovie = 1;
+    private int totalPagesUpComingMovie = 1;
     LinearLayoutManager linearLayoutManager;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,15 +50,15 @@ public class UpcomingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Retrofit retrofit = ApiClient.getClient();
         mApiService = retrofit.create(BaseApiService.class);
-        recyclerView = view.findViewById(R.id.rvMovie);
+        recyclerView = view.findViewById(R.id.rvMovieUpComing);
         linearLayoutManager = new LinearLayoutManager(getContext());
 
-        setPopularMovies();
+        setUpComingMovie();
 
     }
 
-    private void setPopularMovies() {
-        recyclerView = recyclerView.findViewById(R.id.rvMovie);
+    private void setUpComingMovie() {
+        recyclerView = recyclerView.findViewById(R.id.rvMovieUpComing);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         Toast toast = Toast.makeText(getContext(), "Loading all upcoming movies", Toast.LENGTH_SHORT);
@@ -71,12 +71,12 @@ public class UpcomingFragment extends Fragment {
                 super.onScrolled(recyclerView, dx, dy);
                 if (!recyclerView.canScrollVertically(2)) {
                     if (dy > 0) {
-                        if (currentPageMoviePopular <= 10) {
-                            currentPageMoviePopular += 1;
+                        if (currentPageUpComingMovie <= 10) {
+                            currentPageUpComingMovie += 1;
                         }
                     } else if(dy<0){
 
-                        currentPageMoviePopular -= 1;
+                        currentPageUpComingMovie -= 1;
                         linearLayoutManager.getReverseLayout();
 
                     }
@@ -89,12 +89,12 @@ public class UpcomingFragment extends Fragment {
     }
 
     private void getPopularMovies() {
-        Call<Respons> call = mApiService.getPopularMovies(API_KEY, LANGUAGE, currentPageMoviePopular);
+        Call<Respons> call = mApiService.getUpComingMovies(API_KEY, LANGUAGE, currentPageUpComingMovie);
         call.enqueue(new Callback<Respons>() {
             @Override
             public void onResponse(@NonNull Call<Respons> call, @NonNull Response<Respons> response) {
                 if (response.body() != null) {
-                    totalPagesMoviePopular = response.body().getTotalPages();
+                    totalPagesUpComingMovie = response.body().getTotalPages();
                     if (response.body().getResults() != null) {
                         int oldCount = moviePopularResult.size();
                         moviePopularResult.addAll(response.body().getResults());
@@ -102,7 +102,7 @@ public class UpcomingFragment extends Fragment {
                                 String.valueOf(moviePopularResult.size()));
                         List<MovieResult> movies = response.body().getResults();
                         recyclerView.setLayoutManager(linearLayoutManager);
-                        recyclerView.setAdapter(new MovieAdapter(movies, R.layout.row, getContext()));
+                        recyclerView.setAdapter(new UpComingAdapter(movies, R.layout.upcoming_row, getContext()));
 
 
                     }
