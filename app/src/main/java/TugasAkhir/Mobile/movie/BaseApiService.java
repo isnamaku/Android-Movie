@@ -12,27 +12,7 @@ import retrofit2.http.Query;
         Call<Respons> getPopularMovies(@Query("api_key") String apiKey, @Query("language") String language,
                                                                     @Query("page") int page);
 
-        //Permintaan untuk menampilkan Now Playing Movies
-        @GET("movie/now_playing")
-        Call<Respons> getNowPlayingMovies(@Query("api_key") String apiKey, @Query("language") String language,
-                                           @Query("page") int page);
-
-        //Permintaan untuk menampilkan Upcoming Movies
-        @GET("movie/upcoming")
-        Call<Respons> getUpcomingMovies(@Query("api_key") String apiKey, @Query("language") String language,
-                                         @Query("page") int page);
-
-        //Permintaan untuk menampilkan Top Rated Movies
-        @GET("movie/top_rated")
-        Call<Respons> getTopRatedMovies(@Query("api_key") String apiKey, @Query("language") String language,
-                                         @Query("page") int page);
-
-        //Permintaan untuk pencarian Movie
-        @GET("search/movie")
-        Call<Respons> searchMovie(@Query("api_key") String apiKey, @Query("language") String language,
-                                   @Query("query") String query, @Query("page") int page);
-
-        //Permintaan untuk menampilkan rincian / details movie
+        //Details movie
         @GET("movie/{movie_id}")
         Call<MovieResult> getMovieDetails(@Path("movie_id") String id, @Query("api_key") String apiKey);
 

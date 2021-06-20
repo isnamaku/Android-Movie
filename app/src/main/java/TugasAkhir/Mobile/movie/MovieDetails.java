@@ -18,24 +18,27 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.text.format.DateFormat;
 
 public class MovieDetails extends AppCompatActivity {
 
     BaseApiService mApiService;
     int id;
     double realStar;
-    String tipe;
     ImageView ivPoster,ivBg;
     RatingBar ratingBar;
     TextView tvTitle, tvRating, tvRelease, tvPopularity, tvStory;
     FloatingActionButton btnSearch;
-    List<MovieResult> results = new ArrayList<>();
+    String date;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,6 @@ public class MovieDetails extends AppCompatActivity {
 
         mApiService = ApiClient.getClient().create(BaseApiService.class);
         id = getIntent().getIntExtra("id",0);
-        tipe = getIntent().getStringExtra("tipe");
 
         tvTitle = findViewById(R.id.tvName);
         tvPopularity = findViewById(R.id.tvPopularity);
@@ -88,7 +90,7 @@ public class MovieDetails extends AppCompatActivity {
                     tvPopularity.setText(response.body().getPopularity());
                     tvRating.setText(response.body().getVoteAverage()+" / 10");
                     tvStory.setText(response.body().getOverview());
-                    tvRelease.setText(response.body().getReleaseDate());
+
                     realStar = response.body().getVoteAverage()/2;
                     ratingBar.setRating((float) realStar);
 
@@ -101,7 +103,9 @@ public class MovieDetails extends AppCompatActivity {
                         }
                     });
 
-
+                    String value = String.valueOf(response.body().getReleaseDate());
+                    String date = value.substring(8,10)+"/"+value.substring(5,7) +"/"+ value.substring(0,4);
+                    tvRelease.setText(String.valueOf(date));
                 }
             }
 
