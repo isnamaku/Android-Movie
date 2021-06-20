@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         textViewID = Integer.parseInt(b.getString("textViewId"));
         textViewNameString = b.getString("textViewUsername");
         textViewEmailString = b.getString("textViewEmail");
+        textViewPasswordString = b.getString("textViewPassword");
 
 
         Log.d("Data", String.valueOf(textViewID));
