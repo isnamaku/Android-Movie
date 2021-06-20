@@ -46,8 +46,8 @@
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editTextUsername"
-                android:layout_marginTop="80dp"
+                android:layout_below="@id/editTextEmail"
+                android:layout_marginTop="15dp"
                 android:hint="Password"
                 android:inputType="textPassword" />
 
@@ -55,8 +55,8 @@
                 android:id="@+id/saveButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextEmail"
-                android:layout_marginTop="90dp"
+                android:layout_below="@+id/editTextPassword"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/bg_button_pink"
                 android:text="Save"
                 android:textColor="@color/white"
