@@ -62,15 +62,6 @@
             android:textColor="@color/teal_700"
             android:textSize="15sp"
             android:layout_marginTop="5dp" />
-        <TextView
-            android:id="@+id/textViewPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:text="password"
-            android:textColor="@color/teal_700"
-            android:textSize="15sp"
-            android:layout_marginTop="5dp"/>
     </LinearLayout>
 
     <FrameLayout

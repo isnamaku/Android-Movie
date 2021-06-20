@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         textViewName = findViewById(R.id.textViewName);
         textViewEmail = findViewById(R.id.textViewEmail);
-        textViewPassword = findViewById(R.id.textViewPassword);
         textViewLogout = findViewById(R.id.textViewLogout);
 
         final Bundle b = getIntent().getExtras();
@@ -60,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         textViewName.setText("Hello " + textViewNameString + "!");
         textViewEmail.setText(textViewEmailString);
-        textViewPassword.setText(textViewPasswordString);
 
         textViewLogout.setOnClickListener(new View.OnClickListener() {
             @Override
