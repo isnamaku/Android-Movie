@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +27,12 @@ public class HomeFragment extends Fragment {
     ProgressDialog loading;
     private List<MovieResult> moviePopularResult = new ArrayList<>();
     BaseApiService mApiService;
-    public static final int CONNECTION_TIMEOUT = 10000;
-    public static final int READ_TIMEOUT = 15000;
     private RecyclerView recyclerView;
-    private MovieAdapter movieAdapter;
     public static final String API_KEY = "e6bb64e1c930a688fb64df291debff39";
     public static final String LANGUAGE = "en-US";
     private int currentPageMoviePopular = 1;
     private int totalPagesMoviePopular = 1;
+    private  int lastitemposition = -1;
     LinearLayoutManager linearLayoutManager;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,22 +67,12 @@ public class HomeFragment extends Fragment {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (!recyclerView.canScrollVertically(2)) {
-                    if (dy > 0) {
-                        if (currentPageMoviePopular <= 10) {
-                            currentPageMoviePopular += 1;
-                        }
-                    } else if(dy<0){
-
-                        currentPageMoviePopular -= 1;
-                        linearLayoutManager.getReverseLayout();
-
-                    }
                     getPopularMovies();
+                    currentPageMoviePopular += 1;
                 }
             }
 
         });
-
     }
 
     private void getPopularMovies() {
@@ -96,7 +83,6 @@ public class HomeFragment extends Fragment {
                 if (response.body() != null) {
                     totalPagesMoviePopular = response.body().getTotalPages();
                     if (response.body().getResults() != null) {
-                        int oldCount = moviePopularResult.size();
                         moviePopularResult.addAll(response.body().getResults());
                         Log.d("Retrofit Get", "Number of movies : " +
                                 String.valueOf(moviePopularResult.size()));
