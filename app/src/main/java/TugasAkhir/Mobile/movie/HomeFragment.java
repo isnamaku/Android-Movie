@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
     private List<MovieResult> moviePopularResult = new ArrayList<>();
     BaseApiService mApiService;
     private RecyclerView recyclerView;
-    public static final String API_KEY = "e6bb64e1c930a688fb64df291debff39";
+    public static final String API_KEY = "";
     public static final String LANGUAGE = "en-US";
     private int currentPageMoviePopular = 1;
     private int totalPagesMoviePopular = 1;
